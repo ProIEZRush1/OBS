@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="OneSkyBlock">
+    <output-path>$PROJECT_DIR$/../../Servidor/plugins</output-path>
+    <root id="archive" name="OneSkyBlock.jar">
+      <element id="module-output" name="OneSkyBlock" />
+    </root>
+  </artifact>
+</component>

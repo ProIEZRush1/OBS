@@ -1,0 +1,34 @@
+main: me.proiezrush.oneskyblock.Main
+name: OneSkyBlock
+version: "CUSTOM1.0"
+author: Strikes Development
+commands:
+  ob:
+    aliases: [oneblock]
+    description: Main plugin command
+  trade:
+    aliases: [trading, tradeos, tradear, tienda]
+    description: Trade
+  missions:
+    aliases: [misiones]
+    description: Missions
+  skills:
+    aliases: [habilidades, abilidades]
+    description: Skills
+  visit:
+    aliases: [visitar]
+    description: Visit other islands
+permissions:
+  ob.player:
+    default: not op
+    children:
+      ob.trade: true
+      ob.command: true
+  ob.vip:
+    default: not op
+    children:
+      ob.autopickup: true
+      ob.player: true
+softdepend:
+  - PlaceholderAPI
+  - ProtocolLib

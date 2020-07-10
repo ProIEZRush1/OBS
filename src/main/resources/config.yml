@@ -1,0 +1,309 @@
+MySQL:
+  Enabled: false
+  Host: localhost
+  Database: ob
+  Username: root
+  Password: ''
+  Port: 3306
+
+MaxResets: 3
+
+NPCName: '&c&lSETTINGS'
+NPCPlayerName: 'ProIEZRush' #For skin
+NPCTexure: '' #If error
+NPCSignature: ''
+
+CreateIslandTitle: '&aWelcome %player%'
+CreateIslandSubtitle: '&7This is OB'
+
+level-updated-sound: 'LEVEL_UP'
+
+Levels: #BlocksToMine | Levels are in order
+  - 50
+  - 100
+  - 200
+  - 350
+  - 500
+
+Status:
+  Uncompleted: '&c&lUNCOMPLETED'
+  Completed: '&a&lCOMPLETED'
+
+MissionsInventory:
+  Name: '&8Missions...'
+  Size: 27
+  Items:
+    1:
+      Name: '&aWorkbench'
+      Lore:
+        - '&7Task: &fCraft Workbench'
+        - '&7'
+        - '%status%'
+      Material: 'WORKBENCH'
+      Data: 0
+      Slot: 10
+      Mission: 'Workbench'
+    2:
+      Name: '&aMiner'
+      Lore:
+        - '&7Task: &fMine 10 Iron Ores'
+        - '&7'
+        - '%status%'
+      Material: 'IRON_ORE'
+      Data: 0
+      Slot: 11
+      Mission: 'Miner'
+    3:
+      Name: '&aBuilder'
+      Lore:
+        - '&7Task: &fBuild 10 Iron Blocks'
+        - '&7'
+        - '%status%'
+      Material: 'IRON_BLOCK'
+      Data: 0
+      Slot: 12
+      Mission: 'Builder'
+
+Missions:
+  Workbench:
+    Type: 'CRAFT' #Types: CRAFT, BREAK, PLACE
+    Material: 'WORKBENCH' #Item that needs to be crafted
+    Data: 0
+    Command: '[message] &e%player% &aworkbench mission completed' #This command will be executed when player finish this mission (leave blank for no execute)
+  Miner:
+    Type: 'BREAK'
+    Material: 'IRON_ORE'
+    Data: 0
+    Number: 10 #Number of blocks
+    Command: '[message] &e%player% &aminer mission completed'
+  Builder:
+    Type: 'Place'
+    Material: 'IRON_BLOCK'
+    Data: 0
+    Number: 10
+    Command: '[message] &e%player% &abuilder mission completed'
+
+SkillsInventory:
+  Name: '&8Skills...'
+  Size: 27
+  Items:
+    1:
+      Name: '&aSwordsman'
+      Lore:
+        - '%level_description_1%' #%level_description_LINE%
+      Material: 'IRON_SWORD'
+      Data: 0
+      Slot: 10
+      Skill: 'Swordsman' #Put skill name | Same as skill name (with mayus ans minus)
+
+Skills:
+  Swordsman:
+    Levels:
+      1: #Make any levels
+        Type: 'CRAFT' #Types: CRAFT, BREAK, PLACE
+        Material: 'IRON_SWORD' #Item that needs to be crafted
+        Data: 0
+        Command: '[message] &e%player% &ayou are level 1' #This command will be executed when player reaches this level (leave blank for no execute)
+        Description: #This will be replace %level_description_LINE%
+          - '&7Task: &fCraft Iron Sword'
+      2:
+        Type: 'BREAK'
+        Material: 'IRON_ORE'
+        Data: 0
+        Number: 10 #Number of blocks
+        Command: '[op] teleport %player% 0 0 0'
+        Description:
+          - '&7Task: &fBreak 10 Iron Ores'
+      3:
+        Type: 'PLACE'
+        Material: 'DIAMOND_BLOCK'
+        Data: 0
+        Number: 10
+        Command: '[player] ob'
+        Description:
+          - '&7Task: &fPlace 10 Diamond blocks'
+
+Cooldown: #When you break this blocks you will have a cooldown depending on your level
+  - 50
+  - 100
+  - 150
+  - 200
+  - 250
+  - 300
+  - 350
+  - 400
+  - 450
+  - 500
+
+Upgrades:
+  default: #You can't delete this | This is used when there are no for player's level
+    MaxMembers: 5
+    Size: 100
+    Cooldown: 3 #Seconds
+  1: #This is player level
+    MaxMembers: 5
+    Size: 100 #Blocks from center
+    Cooldown: 3 #Seconds
+  2:
+    MaxMembers: 10
+    Size: 200
+    Cooldown: 5 #Seconds
+
+Tradings: #This is the inventory where all inventories go
+  Name: '&8Tradings...'
+  Size: 27
+  Items:
+    1:
+      Name: '&aBlocks'
+      Lore:
+        - ''
+      Material: 'GRASS'
+      Data: 0
+      Slot: 10
+      Inventory: 1 #Inventory to open (Key name must be the same) (If not exist it wont open)
+
+TradingInventories:
+  1: #You can create multiple inventories for trading
+    Name: '&8Blocks...' #Inventory name
+    Size: 36
+    Items:
+      1: #This is the item that will given to player
+        Name: ''
+        Lore:
+          - ''
+        Material: 'GRASS'
+        Data: 0
+        Slot: 10
+        TradeItem: #This item is the needed to change
+          Name: '' #Leave blank if you don't want custom name
+          Lore:
+            - ''
+          Material: 'COBBLESTONE'
+          Data: 0
+
+TabList:
+  Header:
+    - '&7&m---------------'
+    - '&e&lONESKYBLOCK'
+  Footer:
+    - '&e&lONESKYBLOCK'
+    - '&7&m---------------'
+
+Scoreboard:
+  Title: '&e&lONESKYBLOCK'
+  List:
+    - '&7'
+    - '&a%player_name%'
+    - '&7Rank: %luckperms_prefix%'
+    - '&'
+
+Inventories:
+  TopMenu:
+    Name: '&8TopMenu...'
+    Items:
+      Name: '&aTop &e#%number% &7&o(%player%)'
+      Lore:
+        - '&f%level%'
+      Material: 'SKULL_ITEM'
+      Data: 3
+  KickPlayer:
+    Name: '&8KickPlayer...'
+    Items:
+      Name: '&a%player%'
+      Lore:
+        - ''
+      Material: 'SKULL_ITEM'
+      Data: 3
+  AddPlayer:
+    Name: '&8AddPlayer...'
+    Items:
+      Name: '&a%player%'
+      Lore:
+        - ''
+      Material: 'SKULL_ITEM'
+      Data: 3
+  IsMenu:
+    Name: '&8Settings...'
+    Size: 9
+    Items:
+      Spawn:
+        Name: '&aSpawn'
+        Lore:
+          - ''
+        Material: 'BED'
+        Data: 0
+        Slot: 0
+      TopIslands:
+        Name: '&aTop Islands'
+        Lore:
+          - ''
+        Material: 'DIAMOND_SWORD'
+        Data: 0
+        Slot: 1
+      ResetIsland:
+        Name: '&aReset Island'
+        Lore:
+          - ''
+        Material: 'NETHER_STAR'
+        Data: 0
+        Slot: 2
+      KickPlayer:
+        Name: '&aKick Player'
+        Lore:
+          - ''
+        Material: 'REDSTONE'
+        Data: 0
+        Slot: 3
+      LockIsland:
+        Name: '&aLock Island'
+        Lore:
+          - ''
+        Material: 'BARRIER'
+        Data: 0
+        Slot: 4
+      AddPlayer:
+        Name: '&aAdd Player'
+        Lore:
+          - ''
+        Material: 'EMERALD_BLOCK'
+        Data: 0
+        Slot: 5
+      IslandLevel:
+        Name: '&aIsland Level'
+        Lore:
+          - ''
+        Material: 'LAVA_BUCKET'
+        Data: 0
+        Slot: 6
+      IslandChat:
+        Name: '&aIsland Chat'
+        Lore:
+          - ''
+        Material: 'PAPER'
+        Data: 0
+        Slot: 7
+      NPC:
+        Name: '&aGet NPC egg'
+        Lore:
+          - ''
+        Material: 'DRAGON_EGG'
+        Data: 0
+        Slot: 8
+  ResetConfirmation:
+    Name: '&8Confirm...'
+    Size: 9
+    Items:
+      Confirm:
+        Name: '&aConfirm'
+        Lore:
+          - ''
+        Material: 'STAINED_GLASS_PANE'
+        Data: 13
+        Slot: 2
+      Cancel:
+        Name: '&cCancel'
+        Lore:
+          - ''
+        Material: 'STAINED_GLASS_PANE'
+        Data: 14
+        Slot: 6
